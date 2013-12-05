@@ -1,0 +1,1 @@
+Online tic tac toe. Default index (/Noughtcrosser) is mapped to the "home" controller. This links to game controller, which creates the "game" joining the two opponents together. This links to the "square" controller, which oversees the actual filling in of the squares (commonly called "playing the stupid game.")

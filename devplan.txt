@@ -1,0 +1,17 @@
+0.1:
+One-console, two-player tic-tac toe.
+
+0.2
+Two-console, two-player games
+	Highlight three winning boxes in grid
+	Bug: You can continue making moves after a winner has been declared
+
+0.3
+Online multiplayer challenges
+
+1.0
+Login security stuff, maintaining game records
+
+1.1
+Add ability to resize board (m,n,k games)
+	Store session info in SESSIONS instead of forms
