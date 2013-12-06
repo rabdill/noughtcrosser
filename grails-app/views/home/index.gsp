@@ -13,8 +13,12 @@
 <div class="container">
 <g:render template="/templates/titleBar" />
 
-	<div class="row"><a href="<g:createLink controller="user" action="login" />">Log in!</a></div>
-	
+	<g:if test="${session.user == null}">
+		<div class="row"><a href="<g:createLink controller="user" action="login" />">Log in!</a></div>
+	</g:if>
+	<g:else>
+		<div class="row">Hello, ${user.first}!</div>
+	</g:else>	
 	<div class="row">
 		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-5 col-xs-offset-1" style="margin-top:10px;" >
 			<a class="btn-primary btn-lg" href="<g:createLink controller="Game" />">PLAY</a><br>

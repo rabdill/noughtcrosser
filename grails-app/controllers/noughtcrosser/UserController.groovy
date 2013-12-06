@@ -24,13 +24,13 @@ class UserController {
 	}
 	
 	def authenticate = {
-		def user = User.findByLoginAndPassword(params.login, params.password)
+		def user = User.findWhere(login:params.login, password:params.password)
 		def success = 0
-		if(user){
+		if(user != null){
 		  session.user = user
 		  success = 1
 		  }
-		return [success:success]
+		return [user:params.login, pass:params.password, success:success]
 		
 	  }
 	

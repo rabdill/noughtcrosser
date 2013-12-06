@@ -5,7 +5,7 @@
 <div class="container">
 	<g:render template="/templates/titleBar" />
 	
-	<g:if test="${success} == 1">
+	<g:if test="${success == 1}">
 		<h2>Login successful!</h2>
 		<a href="<g:createLink controller="game" />">Play now!</a>
 	</g:if>
