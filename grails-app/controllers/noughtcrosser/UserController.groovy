@@ -11,6 +11,28 @@ class UserController {
 		def curUser = User.findWhere(userName: params.uname)
 		return [curUser:curUser]
 		}
-
+	
+	def createForm() {
+		
+	}
+	
+	def create()	{
+		def created = new User(first: params.first, last: params.last, userName:params.userName, password:params.password, wins: "0", losses: "0", ties: "0").save(failOnError:true)
+	}
+	
+	def login = {
+	}
+	
+	def authenticate = {
+		def user = User.findByLoginAndPassword(params.login, params.password)
+		def success = 0
+		if(user){
+		  session.user = user
+		  success = 1
+		  }
+		return [success:success]
+		
+	  }
+	
 	
 }

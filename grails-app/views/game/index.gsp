@@ -8,7 +8,7 @@
 
 		<h2>Create a new game</h2>
 		<g:form name="newGame" url="[action:'createGame',controller:'Game']">
-			Challenger:<br>
+			Challenger (plays X, goes first):<br>
 			<select name="challenger" id="challenger">
 			<g:each in="${allUsers}">
 			    <option value="${it.userName}">${it.first} ${it.last }</option>
@@ -16,7 +16,7 @@
 			</select>
 
            <br><br>
-           Opponent:<br>
+           Opponent (plays O, goes second):<br>
 			<select name="opponent" id="opponent">
 			<g:each in="${allUsers}">
 			    <option value="${it.userName}">${it.first} ${it.last }</option>

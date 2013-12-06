@@ -1,7 +1,7 @@
 package noughtcrosser
 
 class User {
-	String userName
+	String login
 	String password
 	String first
 	String last
@@ -20,7 +20,7 @@ class User {
 		first blank: false
 		last blank: false
 		userName blank: false, unique: true
-		password blank: false
+		password blank: false, password: true
 		wins nullable: true
 		losses nullable: true
 		ties nullable: true
