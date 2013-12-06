@@ -11,7 +11,7 @@
 			Challenger (plays X, goes first):<br>
 			<select name="challenger" id="challenger">
 			<g:each in="${allUsers}">
-			    <option value="${it.userName}">${it.first} ${it.last }</option>
+			    <option value="${it.login}">${it.first} ${it.last }</option>
 			</g:each>			
 			</select>
 
@@ -19,7 +19,7 @@
            Opponent (plays O, goes second):<br>
 			<select name="opponent" id="opponent">
 			<g:each in="${allUsers}">
-			    <option value="${it.userName}">${it.first} ${it.last }</option>
+			    <option value="${it.login}">${it.first} ${it.last }</option>
 			</g:each>			
 			</select>
 			

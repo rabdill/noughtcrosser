@@ -8,7 +8,7 @@ class UserController {
 		}
 	
 	def profile() {
-		def curUser = User.findWhere(userName: params.uname)
+		def curUser = User.findWhere(login: params.login)
 		return [curUser:curUser]
 		}
 	
@@ -17,7 +17,7 @@ class UserController {
 	}
 	
 	def create()	{
-		def created = new User(first: params.first, last: params.last, userName:params.userName, password:params.password, wins: "0", losses: "0", ties: "0").save(failOnError:true)
+		def created = new User(first: params.first, last: params.last, login:params.login, password:params.password, wins: "0", losses: "0", ties: "0").save(failOnError:true)
 	}
 	
 	def login = {
