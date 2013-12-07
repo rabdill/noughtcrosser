@@ -3,8 +3,8 @@ package noughtcrosser
 class Game {
 	Integer winner
 	
-	static belongsTo = [challenger: User]
-	static hasOne = [challenger: User, opponent: User]
+	static belongsTo = [x: User]
+	static hasOne = [x: User, o: User]
 	static hasMany = [squares: Square]
     
 	static constraints = {

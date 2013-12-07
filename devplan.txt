@@ -3,8 +3,10 @@ One-console, two-player tic-tac toe.
 
 0.2
 Two-console, two-player games
+	Add player's first name to "Your move" dialog box
 	Highlight three winning boxes in grid
 	Bug: You can continue making moves after a winner has been declared
+	Bug: You can challenge yourself to a game
 
 0.3
 Online multiplayer challenges

@@ -8,8 +8,19 @@ class GameController {
 		}
 	
 	def createGame() {
+		def x
+		def o
 		//	Creates an entry in the Game table with the current players:
-		def curGame = new Game(challenger:User.findWhere(userName: params.challenger), opponent:User.findWhere(userName: params.opponent)).save(failOnError:true)
+		if(params.goesFirst == 1)	{
+			x = session.user
+			o = User.findWhere(login:params.challenged)
+		}
+		
+		else {
+				o = session.user
+				x = User.findWhere(login:params.challenged)
+			}
+		def curGame = new Game(x:x, o:o).save(failOnError:true)
 		
 		return [gameNum:curGame.id]
 	}

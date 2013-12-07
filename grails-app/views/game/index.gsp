@@ -8,20 +8,17 @@
 
 		<h2>Create a new game</h2>
 		<g:form name="newGame" url="[action:'createGame',controller:'Game']">
-			Challenger (plays X, goes first):<br>
-			<select name="challenger" id="challenger">
+			Whom are you challenging?<br>
+			<select name="challenged" id="challenged">
 			<g:each in="${allUsers}">
 			    <option value="${it.login}">${it.first} ${it.last }</option>
 			</g:each>			
 			</select>
 
            <br><br>
-           Opponent (plays O, goes second):<br>
-			<select name="opponent" id="opponent">
-			<g:each in="${allUsers}">
-			    <option value="${it.login}">${it.first} ${it.last }</option>
-			</g:each>			
-			</select>
+           Are you going first?<br>
+			<g:radio name="goesFirst" value="1" checked="true" />Yes
+			<g:radio name="goesFirst" value="0"  />No
 			
            <g:submitButton name="create" value="Create" />
 		</g:form>
