@@ -21,7 +21,7 @@ class SquareController {
 		
 		
 		def win = 0												//	keeps track of if the game has been won
-		def winner												//	state (X or O) of the winner
+		def winner = 0											//	state (X or O) of the winner
 		def testId		
 		def fullSquares = 0										//	the ID of the square being tested
 		
@@ -73,8 +73,14 @@ class SquareController {
 				if(movesMade % 2 == 0) curMove = new String("X")	//	X and O alternate every turn
 				else curMove = new String("O")
 				
+		def curGame = Game.findWhere(id:gameNum)
+		def winId
+		if(win == 1)	{
+			if(winner == "X") winId = curGame.x.id
+			else winId = curGame.o.id
+		}
 				
-		return [gridArray : gridArray, win:win, winner:winner, curMove:curMove, gameNum:gameNum, fullSquares:fullSquares]
+		return [gridArray : gridArray, win:win, winner:winner, curMove:curMove, gameNum:gameNum, winId:winId, curGame:curGame]
 		}
 		
 	
@@ -108,22 +114,5 @@ class SquareController {
 	
 	
 	
-	def clearGrid2() {
-		def squareNumber = 0
-		def curSquare
-		def killer
-		def killed = 0
-		def gameNum = params.long('gameNum')
-		for (def r = 0; r < 3; r++) {							//	Goes through each row
-			for (def c = 0; c < 3; c++) {						//	Goes through each column in a row before it moves down
-				curSquare = Square.findWhere(ro: r, colum: c)	//	Grabs an array of the current square's information
-				if(curSquare) {
-					killer = Square.get(curSquare.id)
-					killer.delete()
-					killed++
-					}
-				}
-		}
-				return [killed:killed, gameNum:gameNum]
-	}
+	
 }

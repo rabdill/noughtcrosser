@@ -11,7 +11,7 @@ class GameController {
 		def x
 		def o
 		//	Creates an entry in the Game table with the current players:
-		if(params.goesFirst == 1)	{
+		if(params.goesFirst == "1")	{
 			x = session.user
 			o = User.findWhere(login:params.challenged)
 		}
@@ -23,6 +23,12 @@ class GameController {
 		def curGame = new Game(x:x, o:o).save(failOnError:true)
 		
 		return [gameNum:curGame.id]
+	}
+	
+	
+	def record()	{
+		def winId = params.winId as int
+		Game.executeUpdate("update Game g set winner = :winId " + "where g.id = :gameNum ", [winId:winId,gameNum:params.int('gameNum')])		
 	}
 	
 }
