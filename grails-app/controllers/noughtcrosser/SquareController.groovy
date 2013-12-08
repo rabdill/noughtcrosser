@@ -76,11 +76,13 @@ class SquareController {
 		def curGame = Game.findWhere(id:gameNum)
 		def winId
 		if(win == 1)	{
-			if(winner == "X") winId = curGame.x.id
-			else winId = curGame.o.id
+			if(winner == "X") {winId = curGame.x.id
+								loseId = curGame.o.id}
+			else {winId = curGame.o.id
+					loseId = curGame.x.id}
 		}
 				
-		return [gridArray : gridArray, win:win, winner:winner, curMove:curMove, gameNum:gameNum, winId:winId, curGame:curGame]
+		return [gridArray : gridArray, win:win, winner:winner, curMove:curMove, gameNum:gameNum, winId:winId, loseId:loseId, curGame:curGame]
 		}
 		
 	

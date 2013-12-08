@@ -21,11 +21,12 @@
 Game number ${gameNum }
 		<em class="large">
 			<g:if test="${win == 1 }">			<%-- either print the winner or the next person to move --%>
-	 			<br>Winner: ${winner }
+	 			<br>Winner: ${winner } and ${winId }
 	 			<g:form id="gameOver" url="[action:'record',controller:'Game']">	
 					<g:hiddenField name="gameNum" value="${gameNum }" />
 					<g:hiddenField name="winId" value="${winId }" />
-					<input type="submit" value="Record results" style="width: 65px">
+					<g:hiddenField name="loseId" value="${loseId }" />
+					<input type="submit" value="Record results" >
 				</g:form>
 	 			
 	 			

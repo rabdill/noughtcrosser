@@ -27,8 +27,20 @@ class GameController {
 	
 	
 	def record()	{
-		def winId = params.winId as int
-		Game.executeUpdate("update Game g set winner = :winId " + "where g.id = :gameNum ", [winId:winId,gameNum:params.int('gameNum')])		
+		//	recording the winner of the game
+		def curGame = Game.findById(params.gameNum)
+		def winUserId = User.findWhere(id:params.long('winId'))
+		curGame.winner = winUserId
+		curGame.save()
+		
+		//	add the win
+		def winUser = User.findById(params.long('winId'))
+		winUser.wins = winUser.wins + 1
+		winUser.save()
+		
+		def loseUser = User.findWhere(id:params.long('loseId'))
+		loseUser.losses = loseUser.losses + 1
+		loseUser.save(flush:true)
 	}
 	
 }

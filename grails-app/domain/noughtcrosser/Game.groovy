@@ -6,6 +6,6 @@ class Game {
 	static hasMany = [squares: Square]
     
 	static constraints = {
-		winner nullable: true
+	winner nullable:true
 	}
 }
