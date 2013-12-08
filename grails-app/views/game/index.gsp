@@ -11,7 +11,9 @@
 			Whom are you challenging?<br>
 			<select name="challenged" id="challenged">
 			<g:each in="${allUsers}">
-			    <option value="${it.login}">${it.first} ${it.last }</option>
+			    <g:if test = "${it.login != session.user.login }">
+			    	<option value="${it.login}">${it.first} ${it.last }</option>
+			    </g:if>
 			</g:each>			
 			</select>
 
