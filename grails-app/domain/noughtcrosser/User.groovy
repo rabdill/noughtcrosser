@@ -13,8 +13,8 @@ class User {
 		return first + " " + last
 		}
  
-	static mappedBy = [challengeGames:"x", opponentGames:"o"]
-	static hasMany = [challengeGames: Game, opponentGames: Game]
+	static mappedBy = [challengeGames:"x", opponentGames:"o", wonGames:"winner"]
+	static hasMany = [challengeGames: Game, opponentGames: Game, wonGames: Game]
 	
     static constraints = {
 		first blank: false
