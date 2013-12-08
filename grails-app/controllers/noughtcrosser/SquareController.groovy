@@ -75,6 +75,7 @@ class SquareController {
 				
 		def curGame = Game.findWhere(id:gameNum)
 		def winId
+		def loseId
 		if(win == 1)	{
 			if(winner == "X") {winId = curGame.x.id
 								loseId = curGame.o.id}
