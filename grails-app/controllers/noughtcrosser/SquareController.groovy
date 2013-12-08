@@ -24,12 +24,18 @@ class SquareController {
 		def winner = 0											//	state (X or O) of the winner
 		def testId		
 		def fullSquares = 0										//	the ID of the square being tested
+		def winId
+		def loseId
+		def curGame = Game.findWhere(id:gameNum)
 		
 		//	Check for a TIE (just checks if all squares are filled in)
 		for (def u = 0; u < 9; u++) {												
 			if(gridArray[u] != " ") fullSquares++
 		}
-		if(fullSquares == 9) win = 2							// a 2 means a tie in the view
+		if(fullSquares == 9) {win = 2							// a 2 means a tie in the view
+							winId = curGame.x.id
+							loseId = curGame.o.id
+							}
 		
 		//Check for three in a row across:
 		for (def t = 0; t < 3; t++) {							//	iterates through the first square of each row
@@ -72,10 +78,7 @@ class SquareController {
 				def curMove
 				if(movesMade % 2 == 0) curMove = new String("X")	//	X and O alternate every turn
 				else curMove = new String("O")
-				
-		def curGame = Game.findWhere(id:gameNum)
-		def winId
-		def loseId
+
 		if(win == 1)	{
 			if(winner == "X") {winId = curGame.x.id
 								loseId = curGame.o.id}

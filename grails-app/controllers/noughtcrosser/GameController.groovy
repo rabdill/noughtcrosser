@@ -27,7 +27,7 @@ class GameController {
 	
 	
 	def record()	{
-		//	recording the winner of the game
+		if(params.int('win') == 1){			//	recording the winner of the game
 		def curGame = Game.findById(params.gameNum)
 		def winUserId = User.findWhere(id:params.long('winId'))
 		curGame.winner = winUserId
@@ -41,6 +41,17 @@ class GameController {
 		def loseUser = User.findWhere(id:params.long('loseId'))
 		loseUser.losses = loseUser.losses + 1
 		loseUser.save(flush:true)
+		}
+		
+		else {				//	recording a tie
+			def winUser = User.findById(params.long('winId'))
+			winUser.ties = winUser.ties + 1
+			winUser.save()
+			
+			def loseUser = User.findWhere(id:params.long('loseId'))
+			loseUser.ties = loseUser.ties + 1
+			loseUser.save(flush:true)
+		}
 	}
 	
 }

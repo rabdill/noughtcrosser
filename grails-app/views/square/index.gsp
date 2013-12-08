@@ -21,8 +21,9 @@
 Game number ${gameNum }
 		<em class="large">
 			<g:if test="${win == 1 }">			<%-- either print the winner or the next person to move --%>
-	 			<br>Winner: ${winner } and ${winId }
+	 			<br>Winner: ${winner }
 	 			<g:form id="gameOver" url="[action:'record',controller:'Game']">	
+					<g:hiddenField name="win" value="${win }" />
 					<g:hiddenField name="gameNum" value="${gameNum }" />
 					<g:hiddenField name="winId" value="${winId }" />
 					<g:hiddenField name="loseId" value="${loseId }" />
@@ -34,7 +35,13 @@ Game number ${gameNum }
 			</g:if>
 			<g:elseif test="${win == 2 }">
 				<br>Tie game!
-	 			<h4><a href="<g:createLink controller="game" />">Start new game</a></h4><br>
+	 			<g:form id="gameOver" url="[action:'record',controller:'Game']">	
+					<g:hiddenField name="win" value="${win }" />
+					<g:hiddenField name="gameNum" value="${gameNum }" />
+					<g:hiddenField name="winId" value="${winId }" />
+					<g:hiddenField name="loseId" value="${loseId }" />
+					<input type="submit" value="Record results" >
+				</g:form>
 			</g:elseif>
 	 		<g:else>
 	 			<br>Your move, ${curMove } (<g:if test="${curMove == "X" }">${curGame.x }</g:if>
