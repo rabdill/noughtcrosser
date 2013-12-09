@@ -38,3 +38,15 @@ DataSource.groovy
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Ignore some IDE and build directores #
+########################################
+bin/
+target/
+target-eclipse/
+.settings/
+.idea/
+.metadata/
+*.iml
+.classpath
+.project
