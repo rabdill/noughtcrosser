@@ -136,11 +136,9 @@ class SquareController {
 	}
 	
 	
-	def clearGrid() {
-		def gameNum = params.long('gameNum')
-		def squares = Square.findAll("from Square as s where s.game=?", [Game.findWhere(id: gameNum)])
-		Square.executeUpdate("delete Square s where s.game = :clearGame", [clearGame:Game.findWhere(id: gameNum)])
-		return [gameNum:gameNum]
+	def clearGrid( Long gameId ) {
+        gamesService.clearBoard( gameId )
+		redirect( controller: 'square', action: 'index', id: gameId )
 	}
 
 	

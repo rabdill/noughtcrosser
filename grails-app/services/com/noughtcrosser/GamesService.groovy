@@ -26,4 +26,8 @@ class GamesService {
 
         return nextPlayer
     }
+
+    def clearBoard( Long gameId ) {
+        Square.executeUpdate( "DELETE Square s WHERE s.game.id = :gameId", [gameId:gameId] )
+    }
 }
