@@ -40,7 +40,7 @@
         <section id="widgets">
             Next Move: <span id="gameNextPlayer">${nextPlayer}</span><br />
             Game Number: ${game.id}<br />
-            Winner: <span id="gameWinner">${winner}</span><br />
+            Winner: <span id="gameWinner">${state.winner}</span><br />
 
             <br /><br />
             <g:link controller="game" action="new">New Game</g:link><br />
