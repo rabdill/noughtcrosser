@@ -59,6 +59,25 @@ class GamesService {
 
         newSquare.save( flush: true, failOnError: true )
 
+        def endingState = determineGameState( game )
+        if ( endingState.state == 'Draw' ) {
+            game.x.ties++
+            game.o.ties++
+
+            game.x.save( flush: true )
+            game.o.save( flush: true )
+        } else if ( endingState.state == 'Win' ) {
+            if ( game.x.id == endingState.winner.id ) {
+                game.x.wins++
+                game.o.losses++
+            } else {
+                game.x.losses++
+                game.o.wins++
+            }
+            game.x.save( flush: true )
+            game.o.save( flush: true )
+        }
+
         return newSquare
     }
 
@@ -104,7 +123,7 @@ class GamesService {
         log.error gameState
         log.error winner
 
-        return [ state: gameState, winner: winner?.fullName ]
+        return [ state: gameState, winner: [ name: winner?.fullName, id: winner?.id ] ]
     }
 
 }

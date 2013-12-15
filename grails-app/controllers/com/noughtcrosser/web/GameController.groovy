@@ -15,7 +15,7 @@ class GameController {
 	
 	def createGame() {
         def game = new Game( owner: springSecurityService.currentUser as User )
-        if ( params.goFirst == "1" ) {
+        if ( params.goesFirst == "1" ) {
             game.x = springSecurityService.currentUser as User
             game.o = User.findByUsername( params.challenged as String )
         } else {
@@ -29,6 +29,17 @@ class GameController {
             redirect(controller: 'home', action: 'index')
         }
 	}
+
+    def rematch( Long id ) {
+        def game = Game.get( id )
+        def clone = new Game( owner: game.owner, x: game.x, o: game.o )
+
+        if ( clone.save( flush:true ) ) {
+            redirect(controller: 'square', action: 'index', id: clone.id )
+        } else {
+            redirect(controller: 'home', action: 'index')
+        }
+    }
 	
 	
 	def record()	{
