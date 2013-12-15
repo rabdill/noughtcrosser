@@ -6,11 +6,11 @@ class UserController {
 
     def springSecurityService
 
-	def index()	//	displays all the users
-		{
-			def allUsers = User.list()
-			return [allUsers:allUsers]
-		}
+	def index() {
+        def allUsers = User.list()
+
+        return [allUsers:allUsers]
+    }
 	
 	def profile( Long id ) {
 		def currUser = User.get( id as Long )

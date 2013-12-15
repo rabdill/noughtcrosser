@@ -5,9 +5,9 @@ import com.noughtcrosser.Square
 
 class SquareController {
 
-	def index() {		
+	def index( Long id ) {
 		def gridArray= new Character[9]							//Initializes the array of states being sent to the view	
-		def gameNum = params.long('gameNum')					//	Retrieves the game number
+		def gameNum = id                    					//	Retrieves the game number
 		def curSquare											//	The variable for the square currently being looked at inside the loop
 		def squareNumber = 0									//	The variable for the gridArray[] element that will receive the curSquare's state
 		def movesMade = 0										//	Tracks how many moves have been made to figure out whose turn it is

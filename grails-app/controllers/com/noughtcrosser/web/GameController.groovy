@@ -24,7 +24,7 @@ class GameController {
         }
 
         if ( game.save( flush: true ) ) {
-            redirect(controller: 'square', action: 'index', params: [gameNum: game.id] )
+            redirect(controller: 'square', action: 'index', id: game.id )
         } else {
             redirect(controller: 'home', action: 'index')
         }
