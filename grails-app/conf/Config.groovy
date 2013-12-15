@@ -112,3 +112,5 @@ grails.plugin.springsecurity.interceptUrlMap = [
     '/logout/**':    			      ['IS_AUTHENTICATED_ANONYMOUSLY'],
     '/**':                            ['IS_AUTHENTICATED_REMEMBERED']
 ]
+
+grails.views.javascript.library="jquery"

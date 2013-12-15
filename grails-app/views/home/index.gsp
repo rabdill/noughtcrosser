@@ -30,7 +30,7 @@
             </ul>
         </section>
 
-        <section id="stream">
+        <section id="main">
 
         </section>
     </body>

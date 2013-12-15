@@ -37,7 +37,9 @@ body > header > h1 > a:hover {
     color: #DB1A1A;
     text-decoration: none;
 }
-
+body > section#main {
+    width: 550px;
+}
 body > section#widgets {
     width: 300px;
     position: absolute;
@@ -62,19 +64,21 @@ body > section#widgets > ul > li {
 }
 
 table#gameBoard {
-
+    margin: 50px auto;
 }
 table#gameBoard > tbody > tr {
 
 }
 table#gameBoard > tbody > tr > td {
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
     padding: 0;
     margin: 0;
     text-align: center;
     vertical-align: middle;
+    font-size: 4em;
+    cursor: pointer;
 }
 table#gameBoard > tbody > tr:first-child {
     border-bottom: 1px solid #999999;

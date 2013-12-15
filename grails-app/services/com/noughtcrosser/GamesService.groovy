@@ -30,4 +30,22 @@ class GamesService {
     def clearBoard( Long gameId ) {
         Square.executeUpdate( "DELETE Square s WHERE s.game.id = :gameId", [gameId:gameId] )
     }
+
+    def executePlay( Game game, Integer column, Integer row ) {
+        def nextPlayer = determineNextPlayer( game )
+
+        def existing = game.squares.find { it.column == column && it.row == row }
+
+        if ( existing ) {
+            throw new RuntimeException("This square is already taken, please choose a different square")
+        }
+
+        def newSquare = new Square( row: row, column: column, game: game, player: nextPlayer as User )
+        game.squares << newSquare
+
+        newSquare.save( flush: true, failOnError: true )
+
+        return newSquare
+    }
+
 }
