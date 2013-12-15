@@ -57,3 +57,6 @@ body > section#widgets > h1 > a:hover {
     color: #d9edf7;
     letter-spacing: 1px;
 }
+body > section#widgets > ul > li {
+    font-size: 0.8em;
+}

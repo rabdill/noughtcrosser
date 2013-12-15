@@ -11,7 +11,10 @@
                 <h1>Game List</h1>
                 <ul id="gameList">
                     <g:each in="${gameList}">
-                        <li><g:link controller="square" action="index" id="${it.id}">${it.x.fullName} vs. ${it.o.fullName}</g:link></li>
+                        <li>
+                            <g:link controller="square" action="index" id="${it.id}">${it.x.fullName} vs. ${it.o.fullName}</g:link>
+                            - <g:formatDate date="${it.dateCreated}" format="MMM dd yyyy, HH:mm aa" />
+                        </li>
                     </g:each>
                 </ul>
             </sec:ifLoggedIn>
