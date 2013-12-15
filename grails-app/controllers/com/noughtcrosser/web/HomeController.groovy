@@ -12,7 +12,7 @@ class HomeController {
 
         model.userList    = User.list()
         model.gameList    = gamesService.gamesForUser( springSecurityService.currentUser as User )
-        model.currentUser = session.user
+        model.currentUser = springSecurityService.currentUser
 
 		return model
 	}

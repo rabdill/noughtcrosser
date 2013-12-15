@@ -8,6 +8,11 @@
     <body>
         <section id="widgets">
             <sec:ifLoggedIn>
+                <h1>Your Statistics</h1>
+                Wins: ${currentUser?.wins}
+                Draws: ${currentUser?.ties}
+                Losses: ${currentUser?.losses}
+
                 <h1>Game List</h1>
                 <ul id="gameList">
                     <g:each in="${gameList}">
