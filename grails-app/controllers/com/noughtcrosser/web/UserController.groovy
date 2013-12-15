@@ -12,10 +12,15 @@ class UserController {
 			return [allUsers:allUsers]
 		}
 	
-	def profile() {
-		def curUser = User.findWhere(username: params.login)
-		return [curUser:curUser]
-		}
+	def profile( Long id ) {
+		def currUser = User.get( id as Long )
+
+        if ( currUser != null ) {
+		    return [ curUser:currUser ]
+        } else {
+            redirect( controller: "home", action: "index" )
+        }
+    }
 	
 	def createForm() {
 		
