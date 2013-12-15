@@ -10,14 +10,14 @@ class User {
     String firstName
     String lastName
 
-	Integer wins
-	Integer losses
-	Integer ties
+	Integer wins   = 0
+	Integer losses = 0
+	Integer ties   = 0
 
     /* Spring Security Fields */
-    boolean enabled = true
-    boolean accountExpired = false
-    boolean accountLocked = false
+    boolean enabled         = true
+    boolean accountExpired  = false
+    boolean accountLocked   = false
     boolean passwordExpired = false
 	
 	static mappedBy = [challengeGames:"x", opponentGames:"o", wonGames:"winner"]
@@ -56,7 +56,7 @@ class User {
         password = springSecurityService.encodePassword(password)
     }
 
-    String toString() {
+    String getFullName() {
         return firstName + " " + lastName
     }
 

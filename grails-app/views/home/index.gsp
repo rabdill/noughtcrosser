@@ -11,18 +11,24 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-5 col-xs-offset-1" style="margin-top:10px;" >
                     <a class="btn-primary btn-lg" href="<g:createLink controller="Game" />">PLAY</a><br>
                 </div>
-
-
-                <div class="userbox col-lg-3 col-md-3 col-sm-3 col-xs-5">
-                    <h3>Players</h3>
-                    <p style="margin-top: -10px;"><i><a href="<g:createLink controller="user" action="createForm" />">Create an account</a></i></p>
-                    <ul>
-                        <g:each in="${userList}">
-                            <li><a href="<g:createLink controller="user" action="profile"/>?login=${it.username}">${it.firstName} ${it.lastName}</a></li>
-                        </g:each>
-                    </ul>
-                </div>
             </div>
+
+
+            <section>
+                <h1>Game List</h1>
+                <ul id="gameList">
+                    <g:each in="${gameList}">
+                        <li><g:link controller="square" action="index" id="${it.id}">${it.x.fullName} vs. ${it.o.fullName}</g:link></li>
+                    </g:each>
+                </ul>
+
+                <h1>Players</h1>
+                <ul id="userList">
+                    <g:each in="${userList}">
+                        <li><g:link controller="user" action="profile" id="${it.id}">${it.fullName}</g:link></li>
+                    </g:each>
+                </ul>
+            </section>
         </div>
     </body>
 </html>
