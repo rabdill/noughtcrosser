@@ -22,12 +22,16 @@ class UserController {
         }
     }
 	
-	def createForm() {
+	def 'new'() {
 		
 	}
 	
 	def create()	{
 		def created = new User( params['user'] as Map ).save(failOnError:true)
+
+        flash.info = "New user has been created"
+
+        redirect( controller: "home", action: "index" )
 	}
 	
 	def login = {

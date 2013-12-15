@@ -1,15 +1,19 @@
 package com.noughtcrosser
 
 class Square {
-	Integer ro
-	Integer colum
-	Character state
-	
+	Integer row
+	Integer column
+    User player
+
 	static belongsTo =	[game: Game]
 
+    static mapping = {
+        column column: '`column`'
+    }
+
 	static constraints = {
-    ro blank: false
-	colum blank: false
-	state nullable: true
-		}
+        row    blank: false
+        column blank: false
+        player nullable: true
+    }
 }

@@ -8,15 +8,15 @@
     <body>
 
         <div class="container">
-        Game number ${gameNum }
+        Game number ${gameId}
                 <em class="large">
                     <g:if test="${win == 1 }">			<%-- either print the winner or the next person to move --%>
                         <br>Winner: ${winner }
                         <g:form id="gameOver" url="[action:'record',controller:'Game']">
                             <g:hiddenField name="win" value="${win }" />
-                            <g:hiddenField name="gameNum" value="${gameNum }" />
-                            <g:hiddenField name="winId" value="${winId }" />
-                            <g:hiddenField name="loseId" value="${loseId }" />
+                            <g:hiddenField name="gameId" value="${gameId}" />
+                            <g:hiddenField name="winId" value="${winId}" />
+                            <g:hiddenField name="loseId" value="${loseId}" />
                             <input type="submit" value="Record results" >
                         </g:form>
 
@@ -27,15 +27,15 @@
                         <br>Tie game!
                         <g:form id="gameOver" url="[action:'record',controller:'Game']">
                             <g:hiddenField name="win" value="${win }" />
-                            <g:hiddenField name="gameNum" value="${gameNum }" />
+                            <g:hiddenField name="gameId" value="${gameId}" />
                             <g:hiddenField name="winId" value="${winId }" />
                             <g:hiddenField name="loseId" value="${loseId }" />
                             <input type="submit" value="Record results" >
                         </g:form>
                     </g:elseif>
                     <g:else>
-                        <br>Your move, ${curMove } (<g:if test="${curMove == "X" }">${curGame.x }</g:if>
-                                                    <g:else>${curGame.o}</g:else>)
+                        <br>Your move, ${curMove} (<g:if test="${curMove == "X" }">${curGame.x.fullName }</g:if>
+                                                    <g:else>${curGame.o.fullName}</g:else>)
                                                                             <br>
                     </g:else>
                 </em>
@@ -49,7 +49,7 @@
                             <g:form controller="Square" action="makeMove">
                                     <g:hiddenField name="state" value="${curMove}" />
                                     <g:hiddenField name="squareSelect" value="${i }" />
-                                    <g:hiddenField name="gameNum" value="${gameNum }" />
+                                    <g:hiddenField name="gameId" value="${gameId}" />
                                     <input type="submit" value=" " style="width: 65px">
                             </g:form>
                         </g:if>
@@ -61,7 +61,7 @@
                     </tr>
                  </table>
                 <g:form name="madeMove" url="[action:'clearGrid',controller:'Square']">
-                    <g:hiddenField name="gameNum" value="${gameNum }" />
+                    <g:hiddenField name="gameId" value="${gameId}" />
                    <center><g:submitButton name="create" value="Clear board" /></center>
                 </g:form>
             </div>

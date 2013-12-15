@@ -102,7 +102,7 @@ grails.plugin.springsecurity.authority.className = 'com.noughtcrosser.Role'
 grails.plugin.springsecurity.securityConfigType = grails.plugin.springsecurity.SecurityConfigType.InterceptUrlMap
 grails.plugin.springsecurity.interceptUrlMap = [
     '/':                              ['IS_AUTHENTICATED_ANONYMOUSLY'],
-    '/user/createForm':               ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/user/new':                      ['IS_AUTHENTICATED_ANONYMOUSLY'],
     '/user/create':                   ['IS_AUTHENTICATED_ANONYMOUSLY'],
     '/**/js/**':                      ['IS_AUTHENTICATED_ANONYMOUSLY'],
     '/**/css/**':                     ['IS_AUTHENTICATED_ANONYMOUSLY'],

@@ -2,22 +2,35 @@ package com.noughtcrosser.web
 
 import com.noughtcrosser.Game
 import com.noughtcrosser.Square
+import com.noughtcrosser.User
 
 class SquareController {
 
+    def gamesService
+
 	def index( Long id ) {
 		def gridArray= new Character[9]							//Initializes the array of states being sent to the view	
-		def gameNum = id                    					//	Retrieves the game number
 		def curSquare											//	The variable for the square currently being looked at inside the loop
 		def squareNumber = 0									//	The variable for the gridArray[] element that will receive the curSquare's state
 		def movesMade = 0										//	Tracks how many moves have been made to figure out whose turn it is
+
+        def game = Game.get( id )
+        def symbols = [
+            x: game.x,
+            o: game.o
+        ]
+
+
+
 		for (def r = 0; r < 3; r++) {							//	Goes through each row
 			for (def c = 0; c < 3; c++) {						//	Goes through each column in a row before it moves down
-				curSquare = Square.findWhere(ro: r, colum: c, game:Game.findWhere(id: gameNum))	//	Grabs an array of the current square's information
+				curSquare = Square.findWhere(row: r, column: c, game:Game.findWhere(id: id))	//	Grabs an array of the current square's information
 				if(!curSquare) gridArray[squareNumber] = " "	//If the square isn't in the database, print it blank
 				else {
 					movesMade++
-					gridArray[squareNumber] = curSquare.state }		//	Grabs the state (X,O, or null) of the current square
+					gridArray[ squareNumber ] = ( squareNumber % 2 == 0 ? 'X' : 'O' )
+                        //curSquare.state   //	Grabs the state (X,O, or null) of the current square
+                }
 				squareNumber++									//	Moves on to the next gridArray[] element
 				}
 		}
@@ -29,7 +42,7 @@ class SquareController {
 		def fullSquares = 0										//	the ID of the square being tested
 		def winId
 		def loseId
-		def curGame = Game.findWhere(id:gameNum)
+		def curGame = Game.get( id )
 		
 		//	Check for a TIE (just checks if all squares are filled in)
 		for (def u = 0; u < 9; u++) {												
@@ -89,27 +102,37 @@ class SquareController {
 					loseId = curGame.x.id}
 		}
 				
-		return [gridArray : gridArray, win:win, winner:winner, curMove:curMove, gameNum:gameNum, winId:winId, loseId:loseId, curGame:curGame]
+		return [gridArray : gridArray, win:win, winner:winner, curMove:curMove, gameId:id, winId:winId, loseId:loseId, curGame:curGame]
 		}
 		
 	
 	
-	def makeMove() {
-		def state = new String(params.state)					//	X or O
-		def squareSelect = new Integer(params.squareSelect)		//	the square being modified (0 through 8, reading left to right)
-		def gameNum = params.long('gameNum')					//the game ID
+	def makeMove( Long gameId ) {
+		def squareSelect = params.squareSelect as Integer // the square being modified (0 through 8, reading left to right)
+
+        def game = Game.get( gameId )
+
+        log.error( "GAME: ${game}")
+
+        def currentPlayer = gamesService.determineNextPlayer( game ) as User
+
+		def column = new Integer((squareSelect) % 3)			//	figuring out what column the square is in (0 through 2)
+
+		def row
+		if ( squareSelect < 3 )
+            row = 0								//	what row (0 through 2 as well)
+		else if ( squareSelect < 6 )
+            row = 1
+		else
+            row = 2
+
+		new Square(
+                player: currentPlayer,
+                row:    row,
+                column: column,
+                game:   game ).save( failOnError: true )
 		
-		def colum = new Integer((squareSelect) % 3)			//	figuring out what column the square is in (0 through 2)
-		def ro = new Integer(0)
-		
-		if(squareSelect < 3) ro = 0								//	what row (0 through 2 as well)
-		else if(squareSelect < 6) ro = 1
-		else ro = 2
-		def newSquare = new Square(state:state, ro:ro, colum:colum, game:Game.findWhere(id: gameNum)).save(failOnError: true)
-		
-		return [gameNum:gameNum]
-		
-		
+		redirect( controller: 'square', action: 'index', id: game.id )
 	}
 	
 	

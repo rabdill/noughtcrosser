@@ -10,7 +10,8 @@
         </sec:ifLoggedIn>
 
         <sec:ifNotLoggedIn>
-            <g:link controller='login' action='auth'>Login</g:link>
+            <g:link controller='login' action='auth'>Login</g:link> |
+            <g:link controller='user' action='new'>New User</g:link>
         </sec:ifNotLoggedIn>
     </p>
 
