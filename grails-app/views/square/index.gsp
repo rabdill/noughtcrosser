@@ -25,6 +25,9 @@
                                 index_td = col + 1;
                             board.find("tr:nth-child(" + (index_tr) + ") > td:nth-child(" + (index_td) + ")").text( data.symbol );
                             $("span#gameNextPlayer").text( data.nextPlayer );
+                            $("span#gameWinner").text( data.gameState.winner == null ? "" : data.gameState.winner );
+
+                            console.log( data.gameState )
                         }
                     }
                 });
@@ -37,7 +40,7 @@
         <section id="widgets">
             Next Move: <span id="gameNextPlayer">${nextPlayer}</span><br />
             Game Number: ${game.id}<br />
-            Winner: ${winner}<br />
+            Winner: <span id="gameWinner">${winner}</span><br />
 
             <br /><br />
             <g:link controller="game" action="new">New Game</g:link><br />

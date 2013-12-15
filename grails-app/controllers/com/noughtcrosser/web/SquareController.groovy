@@ -32,6 +32,7 @@ class SquareController {
             response.nextPlayer = nextPlayer.fullName
             response.nextSymbol = (game.x == nextPlayer) ? 'X' : 'O'
             response.symbol     = (game.x == nextPlayer) ? 'O' : 'X'
+            response.gameState  = gamesService.determineGameState( game )
         } catch ( e ) {
             response.error = e.getMessage()
         }

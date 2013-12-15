@@ -10,12 +10,7 @@ class GameBoardTagLib {
     def drawBoard = { attrs, body ->
         Game game = attrs.game
 
-        //- Organize the squares in a manner that can be easily accessed
-        def board = [ [null,null,null], [null,null,null], [null,null,null] ]
-        game.squares.each { Square square ->
-            board[ square.row ][ square.column ] = square.player
-        }
-
+        def board = game.board
         //log.error board
 
         out << "<table id='gameBoard'>\n"
