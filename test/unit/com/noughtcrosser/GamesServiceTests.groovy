@@ -1,7 +1,6 @@
 package com.noughtcrosser
 
-
-
+import com.noughtcrosser.GamesService
 import grails.test.mixin.*
 import org.junit.*
 

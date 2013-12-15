@@ -7,6 +7,8 @@
 
     <body>
 
+        <game:drawBoard game="${game}" />
+
         <div class="container">
         Game number ${gameId}
                 <em class="large">

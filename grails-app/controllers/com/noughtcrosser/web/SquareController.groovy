@@ -102,8 +102,18 @@ class SquareController {
 					loseId = curGame.x.id}
 		}
 				
-		return [gridArray : gridArray, win:win, winner:winner, curMove:curMove, gameId:id, winId:winId, loseId:loseId, curGame:curGame]
-		}
+		return [
+            gridArray : gridArray,
+            win:win,
+            winner:winner,
+            curMove:curMove,
+            gameId:id,
+            winId:winId,
+            loseId:loseId,
+            curGame:curGame,
+            game:game
+        ]
+    }
 		
 	
 	

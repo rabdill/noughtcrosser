@@ -60,3 +60,31 @@ body > section#widgets > h1 > a:hover {
 body > section#widgets > ul > li {
     font-size: 0.8em;
 }
+
+table#gameBoard {
+
+}
+table#gameBoard > tbody > tr {
+
+}
+table#gameBoard > tbody > tr > td {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+table#gameBoard > tbody > tr:first-child {
+    border-bottom: 1px solid #999999;
+}
+table#gameBoard > tbody > tr:last-child {
+    border-top: 1px solid #999999;
+}
+table#gameBoard > tbody > tr > td:first-child {
+    border-right: 1px solid #999999;
+}
+table#gameBoard > tbody > tr > td:last-child {
+    border-left: 1px solid #999999;
+}

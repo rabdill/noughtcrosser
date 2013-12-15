@@ -60,5 +60,8 @@ class User {
         return firstName + " " + lastName
     }
 
+    String toString() {
+        fullName
+    }
 
 }

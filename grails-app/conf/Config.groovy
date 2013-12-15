@@ -90,7 +90,7 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
-    debug 'org.springframework.security'
+//    debug 'org.springframework.security'
 }
 
 
