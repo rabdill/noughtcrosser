@@ -1,0 +1,30 @@
+body {
+    width: 900px;
+    margin: 0 auto;
+}
+body > header {
+    border-bottom: 1px solid #CCCCCC;
+    position: relative;
+    margin-bottom: 18px;
+}
+body > header > p {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+}
+body > header > h1 {
+    display: inline-block;
+    margin: 20px 0 6px 0;
+}
+body > header > h1 > em {
+    font-size: 0.6em;
+    font-style: italic;
+    color: #CCCCCC;
+}
+body > header > h1 > a,
+body > header > h1 > a:hover {
+    color: #DB1A1A;
+    text-decoration: none;
+}
+

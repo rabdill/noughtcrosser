@@ -1,15 +1,14 @@
-package noughtcrosser
+package web
 
 
 
 import grails.test.mixin.*
-import org.junit.*
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Square)
-class SquareTests {
+@TestFor(User)
+class UserTests {
 
     void testSomething() {
        fail "Implement me"

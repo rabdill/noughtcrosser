@@ -1,15 +1,14 @@
-package noughtcrosser
+package web
 
 
 
 import grails.test.mixin.*
-import org.junit.*
 
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(GameController)
-class GameControllerTests {
+@TestFor(UserController)
+class UserControllerTests {
 
     void testSomething() {
        fail "Implement me"

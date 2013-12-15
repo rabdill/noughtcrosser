@@ -90,4 +90,25 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+    debug 'org.springframework.security'
 }
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.noughtcrosser.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.noughtcrosser.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.noughtcrosser.Role'
+
+grails.plugin.springsecurity.securityConfigType = grails.plugin.springsecurity.SecurityConfigType.InterceptUrlMap
+grails.plugin.springsecurity.interceptUrlMap = [
+    '/':                              ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/user/createForm':               ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/user/create':                   ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/**/js/**':                      ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/**/css/**':                     ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/**/images/**':                  ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/**/favicon.ico':                ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/login/**':     			      ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/logout/**':    			      ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/**':                            ['IS_AUTHENTICATED_REMEMBERED']
+]

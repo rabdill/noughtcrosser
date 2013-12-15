@@ -1,19 +1,19 @@
-<g:render template="/templates/headerInfo" />
-	<title>Noughtcrosser – Online tic tac toe</title>
-	<style>
-		.record	{font-size: 19px;}
-	</style>
-	</head>
-	
-	<body>
-		<div class="container">
-		<g:render template="/templates/titleBar" />
-		<h2>${curUser.first } ${curUser.last }</h2>
-		<div class="record">
-		Wins: ${curUser.wins }<br>
-		Losses: ${curUser.losses }<br>
-		Ties: ${curUser.ties }<br>
-		</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Noughtcrosser: Tic Tac Toe</title>
+        <meta name="layout" content="main" />
+    </head>
+
+    <body>
+
+        <div class="container">
+            <h2>${curUser.firstName } ${curUser.lastName }</h2>
+            <div class="record">
+                Wins: ${curUser.wins ?: 0}<br>
+                Losses: ${curUser.losses ?: 0}<br>
+                Ties: ${curUser.ties ?: 0}<br>
+    		</div>
 		</div>
 	</body>
 </html>
