@@ -7,7 +7,7 @@ class GameController {
 
     def springSecurityService
 	
-	def index()	{
+	def 'new'()	{
 		return [
             allUsers: User.list()
         ]

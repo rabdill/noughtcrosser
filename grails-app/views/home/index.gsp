@@ -18,7 +18,7 @@
 
             <h1>
                 Current Players
-                <g:link controller="game" action="createGame">new game</g:link>
+                <g:link controller="game" action="new">new game</g:link>
             </h1>
             <ul id="userList">
                 <g:each in="${userList}">
