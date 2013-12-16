@@ -1,10 +1,12 @@
-<g:render template="/templates/headerInfo" />
-	<title>Noughtcrosser – Online tic tac toe</title>
-	</head>
-	
-	<body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Noughtcrosser: Tic Tac Toe</title>
+        <meta name="layout" content="main" />
+    </head>
+
+    <body>
 		<div class="container">
-		<g:render template="/templates/titleBar" />
 		<table class="table table-striped">
   			<thead>
   			<tr>
